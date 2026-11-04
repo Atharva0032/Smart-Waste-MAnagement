@@ -1,0 +1,2 @@
+# This file keeps the `uploads/` directory in version control.
+# Uploaded waste images and completion photos are written here at runtime and are git-ignored.
