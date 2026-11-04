@@ -69,9 +69,12 @@ export default function AdminComplaints() {
   const debounceRef = useRef(null);
   const mountedRef = useRef(true);
 
-  useEffect(() => () => {
-    mountedRef.current = false;
-    if (debounceRef.current) clearTimeout(debounceRef.current);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
   }, []);
 
   // Debounce the free-text search so we do not hit the API on every keystroke.

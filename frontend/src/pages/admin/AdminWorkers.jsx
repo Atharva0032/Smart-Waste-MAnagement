@@ -91,8 +91,11 @@ export default function AdminWorkers() {
   const [actionLoading, setActionLoading] = useState(false);
   const mountedRef = useRef(true);
 
-  useEffect(() => () => {
-    mountedRef.current = false;
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
 
   const loadWorkers = useCallback(async () => {

@@ -49,8 +49,11 @@ export default function MyComplaints() {
   const [actionError, setActionError] = useState('');
   const mountedRef = useRef(true);
 
-  useEffect(() => () => {
-    mountedRef.current = false;
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
 
   const loadComplaints = useCallback(async () => {
